@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
+# Expense Tracker App (React Native + Expo + MongoDB)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A full-stack expense tracking app with authentication, monthly filtering, category analytics, budgets, alerts, and recurring expense automation.
 
-## Get started
+## What we built
 
-1. Install dependencies
+### Core implementation status
 
-   ```bash
-   npm install
-   ```
+- ✅ User authentication (signup/login) with JWT
+- ✅ Secure user data isolation (token-based protected APIs)
+- ✅ Expense CRUD (create, read, update, delete)
+- ✅ Category pie-chart analytics
+- ✅ Month-based expense filtering
+- ✅ Budget management per month/category
+- ✅ Budget threshold alerts (near-limit and over-limit)
+- ✅ Budget delete support
+- ✅ Recurring expense setup and monthly auto-apply
+- ✅ Persistent login session in app (`expo-secure-store`)
 
-2. Start the app
+### Current scope summary
 
-   ```bash
-   npx expo start
-   ```
+- Frontend tabs/screens: Home, Expenses, Explore
+- Backend modules: Auth, Expenses, Budgets, Recurring
+- Database collections currently used:
+  - `users`
+  - `expenses`
+  - `budgets`
+  - `recurringexpenses`
 
-In the output, you'll find options to open the app in a
+## Tech stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Frontend: Expo, React Native, Expo Router
+- Backend: Node.js, Express
+- Database: MongoDB (Mongoose)
+- Auth: JWT + bcrypt
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project structure
 
-## Get a fresh project
+- `app/` → mobile app screens/components
+- `backend/` → Express API + MongoDB models/routes
 
-When you're ready, run:
+## Setup guide
+
+### 1) Backend setup
 
 ```bash
-npm run reset-project
+cd backend
+npm install
+copy .env.example .env
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Set values in `backend/.env`:
 
-## Learn more
+- `PORT=5000`
+- `MONGODB_URI=<your_mongodb_connection_string>`
+- `JWT_SECRET=<long_random_secret>`
 
-To learn more about developing your project with Expo, look at the following resources:
+Start backend:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm run dev
+```
 
-## Join the community
+### 2) Mobile app setup
 
-Join our community of developers creating universal apps.
+From project root:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm install
+npm start
+```
+
+## API base URL notes (mobile)
+
+- Android emulator: `http://10.0.2.2:5000`
+- iOS simulator/web: `http://localhost:5000`
+- Real device: use your PC LAN IP, e.g. `http://192.168.1.20:5000`
+
+## Main user flow
+
+1. Sign up / Login
+2. Add and manage expenses
+3. Filter by month and analyze category chart
+4. Set monthly category budgets and monitor alert states
+5. Add recurring expenses and auto-apply monthly entries
+
+## Notes
+
+- Backend endpoint details are documented in `backend/README.md`.
+- This project is actively extended feature-by-feature from an Expo starter.

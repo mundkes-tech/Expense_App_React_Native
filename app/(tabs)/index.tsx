@@ -1,11 +1,10 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
+import { StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
@@ -18,60 +17,38 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+        <ThemedText type="title">Expense Manager</ThemedText>
+        <ThemedText style={styles.subtitle}>
+          Track spending, stay organized, and review your progress.
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
+      <ThemedView style={styles.statsRow}>
+        <ThemedView style={styles.statCard}>
+          <ThemedText type="defaultSemiBold">Total Expenses</ThemedText>
+          <ThemedText style={styles.statValue}>Live</ThemedText>
+        </ThemedView>
+        <ThemedView style={styles.statCard}>
+          <ThemedText type="defaultSemiBold">Account</ThemedText>
+          <ThemedText style={styles.statValue}>Secure</ThemedText>
+        </ThemedView>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+
+      <ThemedView style={styles.card}>
+        <ThemedText type="subtitle">Quick Actions</ThemedText>
+        <Link href="/(tabs)/expenses" style={styles.actionLink}>
+          <ThemedText type="link">Go to Expenses</ThemedText>
+        </Link>
+        <Link href="/(tabs)/explore" style={styles.actionLink}>
+          <ThemedText type="link">Open Explore</ThemedText>
+        </Link>
+      </ThemedView>
+
+      <ThemedView style={styles.card}>
+        <ThemedText type="subtitle">How to use</ThemedText>
         <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          Create your account on the Expenses tab, add your daily transactions, and use the chart
+          to monitor spending by category.
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
@@ -80,13 +57,36 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginBottom: 6,
     gap: 8,
   },
-  stepContainer: {
+  subtitle: {
+    opacity: 0.8,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  statCard: {
+    flex: 1,
+    borderRadius: 12,
+    padding: 14,
+    backgroundColor: 'rgba(161, 206, 220, 0.22)',
+    gap: 6,
+  },
+  statValue: {
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  card: {
     gap: 8,
-    marginBottom: 8,
+    marginTop: 12,
+    borderRadius: 12,
+    padding: 14,
+    backgroundColor: 'rgba(125, 125, 125, 0.12)',
+  },
+  actionLink: {
+    paddingVertical: 2,
   },
   reactLogo: {
     height: 178,
