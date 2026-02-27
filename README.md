@@ -1,47 +1,63 @@
-# Expense Tracker App (React Native + Expo + MongoDB)
+# Expense Tracker App
 
-A full-stack expense tracking app with authentication, monthly filtering, category analytics, budgets, alerts, and recurring expense automation.
+Full-stack expense tracker built with Expo + React Native + Node.js + MongoDB.
 
-## What we built
+## Quick Navigation
 
-### Core implementation status
+- [Highlights](#highlights)
+- [Feature Status](#feature-status)
+- [Architecture](#architecture)
+- [Quick Start](#quick-start)
+- [Environment](#environment)
+- [Run Commands](#run-commands)
+- [User Flow](#user-flow)
+- [API Notes](#api-notes)
+- [Roadmap](#roadmap)
 
-- ✅ User authentication (signup/login) with JWT
-- ✅ Secure user data isolation (token-based protected APIs)
-- ✅ Expense CRUD (create, read, update, delete)
-- ✅ Category pie-chart analytics
-- ✅ Month-based expense filtering
-- ✅ Budget management per month/category
-- ✅ Budget threshold alerts (near-limit and over-limit)
-- ✅ Budget delete support
-- ✅ Recurring expense setup and monthly auto-apply
-- ✅ Persistent login session in app (`expo-secure-store`)
+## Highlights
 
-### Current scope summary
+- Secure JWT-based authentication
+- User-isolated expense data
+- Expense CRUD with monthly filtering
+- Budget setup with near-limit and over-limit alerts
+- Recurring expenses with monthly auto-apply
+- Persistent login session using expo-secure-store
 
-- Frontend tabs/screens: Home, Expenses, Explore
-- Backend modules: Auth, Expenses, Budgets, Recurring
-- Database collections currently used:
-  - `users`
-  - `expenses`
-  - `budgets`
-  - `recurringexpenses`
+## Feature Status
 
-## Tech stack
+| Module | Status | Notes |
+|---|---|---|
+| Auth (Signup/Login) | ✅ Done | JWT + bcrypt |
+| Expense CRUD | ✅ Done | Add, edit, delete, list |
+| Monthly Filter | ✅ Done | Month-based view |
+| Category Analytics | ✅ Done | Pie chart |
+| Budgets | ✅ Done | Per month + category |
+| Budget Alerts | ✅ Done | Near and over limit |
+| Recurring Expenses | ✅ Done | Auto-applies monthly |
+| Session Persistence | ✅ Done | Secure local storage |
 
-- Frontend: Expo, React Native, Expo Router
-- Backend: Node.js, Express
-- Database: MongoDB (Mongoose)
-- Auth: JWT + bcrypt
+## Architecture
 
-## Project structure
+| Layer | Technology | Location |
+|---|---|---|
+| Mobile App | Expo + React Native + Expo Router | app/ |
+| API Server | Node.js + Express | backend/src |
+| Database | MongoDB + Mongoose | backend/src/models |
+| Auth | JWT + bcrypt | backend/src/routes/auth.js |
 
-- `app/` → mobile app screens/components
-- `backend/` → Express API + MongoDB models/routes
+<details>
+<summary><strong>Collections in MongoDB</strong></summary>
 
-## Setup guide
+- users
+- expenses
+- budgets
+- recurringexpenses
 
-### 1) Backend setup
+</details>
+
+## Quick Start
+
+### 1) Setup backend
 
 ```bash
 cd backend
@@ -49,42 +65,64 @@ npm install
 copy .env.example .env
 ```
 
-Set values in `backend/.env`:
-
-- `PORT=5000`
-- `MONGODB_URI=<your_mongodb_connection_string>`
-- `JWT_SECRET=<long_random_secret>`
-
-Start backend:
+### 2) Setup mobile app
 
 ```bash
+cd ..
+npm install
+```
+
+## Environment
+
+Set values in backend/.env:
+
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_long_random_secret
+```
+
+## Run Commands
+
+Open two terminals.
+
+### Terminal A (Backend)
+
+```bash
+cd backend
 npm run dev
 ```
 
-### 2) Mobile app setup
-
-From project root:
+### Terminal B (App)
 
 ```bash
-npm install
 npm start
 ```
 
-## API base URL notes (mobile)
+## User Flow
 
-- Android emulator: `http://10.0.2.2:5000`
-- iOS simulator/web: `http://localhost:5000`
-- Real device: use your PC LAN IP, e.g. `http://192.168.1.20:5000`
+1. Register or login
+2. Add/edit/delete expenses
+3. Filter expenses by month
+4. Set category budgets and track alerts
+5. Configure recurring expenses and auto-apply monthly entries
 
-## Main user flow
+## API Notes
 
-1. Sign up / Login
-2. Add and manage expenses
-3. Filter by month and analyze category chart
-4. Set monthly category budgets and monitor alert states
-5. Add recurring expenses and auto-apply monthly entries
+### Base URL by platform
 
-## Notes
+- Android emulator: http://10.0.2.2:5000
+- iOS simulator/web: http://localhost:5000
+- Real device: http://<your-lan-ip>:5000
 
-- Backend endpoint details are documented in `backend/README.md`.
-- This project is actively extended feature-by-feature from an Expo starter.
+### API reference
+
+See backend API endpoints in [backend/README.md](backend/README.md).
+
+## Roadmap
+
+- Receipt OCR scanning for auto-fill
+- Smart insights and anomaly detection
+- Savings goals dashboard
+- Export to CSV/PDF
+- Shared wallets and collaborative tracking
