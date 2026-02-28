@@ -33,6 +33,19 @@ const expenseSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    locationLabel: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    latitude: {
+      type: Number,
+      required: false,
+    },
+    longitude: {
+      type: Number,
+      required: false,
+    },
   },
   {
     timestamps: true,

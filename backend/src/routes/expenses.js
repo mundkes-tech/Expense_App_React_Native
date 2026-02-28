@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const userId = req.user.userId;
-    const { name, amount, date, category } = req.body;
+    const { name, amount, date, category, locationLabel, latitude, longitude } = req.body;
     if (!name || amount === undefined || !date || !category) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -31,6 +31,9 @@ router.post("/", async (req, res) => {
       amount,
       date,
       category,
+      locationLabel,
+      latitude,
+      longitude,
     });
 
     return res.status(201).json(expense);
@@ -42,7 +45,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const userId = req.user.userId;
-    const { name, amount, date, category } = req.body;
+    const { name, amount, date, category, locationLabel, latitude, longitude } = req.body;
 
     if (!name || amount === undefined || !date || !category) {
       return res.status(400).json({ message: "All fields are required" });
@@ -55,6 +58,9 @@ router.put("/:id", async (req, res) => {
         amount,
         date,
         category,
+        locationLabel,
+        latitude,
+        longitude,
       },
       { new: true }
     );

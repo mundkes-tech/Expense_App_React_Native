@@ -25,25 +25,25 @@ Full-stack expense tracker built with Expo + React Native + Node.js + MongoDB.
 
 ## Feature Status
 
-| Module | Status | Notes |
-|---|---|---|
-| Auth (Signup/Login) | ✅ Done | JWT + bcrypt |
-| Expense CRUD | ✅ Done | Add, edit, delete, list |
-| Monthly Filter | ✅ Done | Month-based view |
-| Category Analytics | ✅ Done | Pie chart |
-| Budgets | ✅ Done | Per month + category |
-| Budget Alerts | ✅ Done | Near and over limit |
-| Recurring Expenses | ✅ Done | Auto-applies monthly |
-| Session Persistence | ✅ Done | Secure local storage |
+| Module              | Status  | Notes                   |
+| ------------------- | ------- | ----------------------- |
+| Auth (Signup/Login) | ✅ Done | JWT + bcrypt            |
+| Expense CRUD        | ✅ Done | Add, edit, delete, list |
+| Monthly Filter      | ✅ Done | Month-based view        |
+| Category Analytics  | ✅ Done | Pie chart               |
+| Budgets             | ✅ Done | Per month + category    |
+| Budget Alerts       | ✅ Done | Near and over limit     |
+| Recurring Expenses  | ✅ Done | Auto-applies monthly    |
+| Session Persistence | ✅ Done | Secure local storage    |
 
 ## Architecture
 
-| Layer | Technology | Location |
-|---|---|---|
-| Mobile App | Expo + React Native + Expo Router | app/ |
-| API Server | Node.js + Express | backend/src |
-| Database | MongoDB + Mongoose | backend/src/models |
-| Auth | JWT + bcrypt | backend/src/routes/auth.js |
+| Layer      | Technology                        | Location                   |
+| ---------- | --------------------------------- | -------------------------- |
+| Mobile App | Expo + React Native + Expo Router | app/                       |
+| API Server | Node.js + Express                 | backend/src                |
+| Database   | MongoDB + Mongoose                | backend/src/models         |
+| Auth       | JWT + bcrypt                      | backend/src/routes/auth.js |
 
 <details>
 <summary><strong>Collections in MongoDB</strong></summary>
