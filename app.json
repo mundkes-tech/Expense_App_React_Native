@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "sample_demo_app",
+    "name": "Expense Manager",
     "slug": "sample_demo_app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,6 +12,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.mohil.expensemanager",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -44,6 +45,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "09607b06-fee5-4554-8aa1-69decf584ba6"
+      }
     }
   }
 }
